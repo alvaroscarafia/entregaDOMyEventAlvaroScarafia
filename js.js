@@ -30,6 +30,11 @@ formulario.addEventListener("submit", (event) => {
             return;
         }
 
+        /* let email = inputEmail.value;
+        let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+        let emailOk = regExp.test(email); */
+
+
     // Crear objeto
     const consulta = {
         nombre: inputNombre.value,
@@ -48,5 +53,24 @@ formulario.addEventListener("submit", (event) => {
     inputConsul.value = "";
 
     console.log(consultas);
+    
+
+    localStorage.setItem("FormularioEnviado", 1);
+
+    //chequear form
+    chequeoForm();
 });
 
+// CHEQUEAR SI SE ENVIO FORMULARIO
+function chequeoForm(){
+    const formularioEnviado = localStorage.getItem("formularioEnviado");
+
+if(formularioEnviado !== null){
+
+    formulario.style.display = "none";
+
+    mensajeForm.style.display= "block";
+}
+}
+
+chequeoForm();
